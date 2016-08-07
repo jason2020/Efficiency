@@ -1,0 +1,23 @@
+body,
+html,
+ul,
+ol,
+p
+	margin: 0
+	padding: 0
+
+=border-radius($radius)
+	-webkit-border-radius: $radius
+	-moz-border-radius:    $radius
+	-ms-border-radius:     $radius
+	border-radius:         $radius
+
+=square($side)
+	width: $side
+	length: $side
+
+=animate($keyframeName, $duration, $iteration)
+	-webkit-animation: $keyframeName $duration $iteration
+	-moz-animation:    $keyframeName $duration $iteration
+	-o-animation:      $keyframeName $duration $iteration
+	animation:         $keyframeName $duration $iteration
