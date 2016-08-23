@@ -4,19 +4,25 @@ $primary: #08415C
 $accent: #388697
 $secondary: #CC2936
 $background: #DBF9B8
-$center: 0 auto
-/* 12 rows */
-$one: percentage(100/12)
 
 /* https://coolors.co/08415c-cc2936-ebbab9-388697-dbf9b8 */
 
 #container
 	width: 99vw
-	height: 200vh
+	height: 100vh
 	background-color: $background
-	margin: $center
 
 .row
-	width: 100%
-	height: 10% 
+	width: $twelve
+	height: $one
 	background-color: $primary
+
+#clock
+	width: $four
+	height: $two
+	background-color: $accent
+	margin: 20% auto
+	font-family: 'Slabo 27px', serif
+	font-size: 1000%
+	color: $primary
+	text-align: center

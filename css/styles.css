@@ -6,15 +6,24 @@ p {
   margin: 0;
   padding: 0; }
 
-/* 12 rows */
+/* 12 cols */
 /* https://coolors.co/08415c-cc2936-ebbab9-388697-dbf9b8 */
 #container {
   width: 99vw;
-  height: 200vh;
-  background-color: #DBF9B8;
-  margin: 0 auto; }
+  height: 100vh;
+  background-color: #DBF9B8; }
 
 .row {
   width: 100%;
-  height: 10%;
+  height: 8.33333%;
   background-color: #08415C; }
+
+#clock {
+  width: 33.33333%;
+  height: 16.66667%;
+  background-color: #388697;
+  margin: 20% auto;
+  font-family: 'Slabo 27px', serif;
+  font-size: 1000%;
+  color: #08415C;
+  text-align: center; }
