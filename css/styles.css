@@ -8,22 +8,32 @@ p {
 
 /* 12 cols */
 /* https://coolors.co/08415c-cc2936-ebbab9-388697-dbf9b8 */
+
+body {
+  overflow: hidden;
+  font-size: 62.5%;
+}
+
 #container {
-  width: 99vw;
+  width: 100vw;
   height: 100vh;
   background-color: #DBF9B8; }
 
-.row {
+#header {
   width: 100%;
-  height: 8.33333%;
+  height: 15%;
   background-color: #08415C; }
 
 #clock {
   width: 33.33333%;
   height: 16.66667%;
   background-color: #388697;
-  margin: 20% auto;
-  font-family: 'Slabo 27px', serif;
-  font-size: 1000%;
+  margin: 10% auto;
+  font-size: 5em;
   color: #08415C;
   text-align: center; }
+
+#time, #date {
+  font-size: 0.75em;
+  font-family: 'Lato', sans-serif;
+}

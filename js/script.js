@@ -1,7 +1,7 @@
 function checkSupport() {
 	if (typeof(Storage) !== "undefined") {
 		var data = getData();
-		console.log("localStorage avaliable");
+		console.log("LocalStorage avaliable");
 		formatPage(data);
 	} else {
 		alert("Browser lacks support for localStorage. Please use another browser.")
@@ -13,24 +13,24 @@ function getData() {
 	var visited = sessionStorage.getItem("visited");
 	// default settings
 	var defaultData = {
-		list1: "test",
+		list: ["Lorem", "ipsum dolor sit amet."],
 		tempPref: "celcius",
-		clock: "12",
+		clock: 12,
 		style: "default"
 	};
 	if (visited == null) {
 		sessionStorage.setItem("visited", true);
 		console.log("New page");
 		setItems(defaultData);
-		// sessionStorage.setItem("list", data.list);
-		// sessionStorage.setItem("tempPref", data.tempPref);
-		// sessionStorage.setItem("clock", data.clock);
-		// sessionStorage.setItem("style", data.style);
+		// sessionStorage.setItem("list", defaultData.list);
+		// sessionStorage.setItem("tempPref", defaultData.tempPref);
+		// sessionStorage.setItem("clock", defaultData.clock);
+		// sessionStorage.setItem("style", defaultData.style);
 		return defaultData;
 	} else {
-		// var data = getItems(defaultData);
+		var data = getItems(defaultData);
 		// var data = {};
-		// data.list = sessionStorage.getItem("list1");
+		// data.list = sessionStorage.getItem("list").split(",");
 		// data.tempPref = sessionStorage.getItem("tempPref");
 		// data.clock = sessionStorage.getItem("clock");
 		// data.style = sessionStorage.getItem("style");
@@ -38,35 +38,59 @@ function getData() {
 	}
 }
 
-checkSupport();
-
 function formatPage (obj) {
 	console.log(obj);
-	setTime(obj.clock)
+	setTime(obj.clock);
 }
 
 function setTime(timePref) {
 	var date = new Date(),
-		day = date.getDate();
+		day = date.getDate(),
+		month = date.getMonth(),
+		year = date.getFullYear(),
+		hour = date.getHours(),
+		minute = date.getMinutes(),
+		second = date.getSeconds(),
+		time = document.getElementById("time"),
+		date = document.getElementById("date"),
+		monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
+	if (timePref == 12) {
+		if (hour > 12) {
+			hour = hour -= 12;
+			time.innerHTML = hour + ":" + checkZero(minute) + ":" + checkZero(second) + " p.m.";
+		} else {
+			time.innerHTML = hour + ":" + checkZero(minute) + ":" + checkZero(second) + " a.m.";
+		}
+	} else {
+		time.innerHTML = hour + ":" + checkZero(minute) + ":" + checkZero(second);
+	}
+
+	date.innerHTML = monthNames[month] + " " + day + "," + year;
+
+	setTimeout(function() {
+		setTime(timePref);
+	}, 200);
 }
 
-function setItems(obj) {
+function checkZero (num) {
+	if (num < 10) {
+		num = "0" + num;
+	}
+	return num;
+}
+
+function setItems (obj) {
 	for (var prop in obj) {
-		if (obj.hasOwnProperty(prop)) {
-			sessionStorage.setItem(prop, obj.prop);
-		}
+		sessionStorage.setItem(prop, obj[prop]);
 	}
 }
 
-function getItems(obj) {
+function getItems (obj) {
 	var tObj = {};
 	for (var prop in obj) {
-		if (obj.hasOwnProperty(prop)) {
-			var objProperty = sessionStorage.getItem("list1");
-			console.log(objProperty);
-			tObj[prop] = objProperty;
-		}
+		var objProperty = sessionStorage.getItem(prop);
+		tObj[prop] = objProperty;
 	}
 	return tObj;
 }
