@@ -58,9 +58,9 @@ function setTime(timePref) {
 	if (timePref == 12) {
 		if (hour > 12) {
 			hour = hour -= 12;
-			time.innerHTML = hour + ":" + checkZero(minute) + ":" + checkZero(second) + " p.m.";
+			time.innerHTML = hour + ":" + checkZero(minute) + ":" + checkZero(second) + " P.M.";
 		} else {
-			time.innerHTML = hour + ":" + checkZero(minute) + ":" + checkZero(second) + " a.m.";
+			time.innerHTML = hour + ":" + checkZero(minute) + ":" + checkZero(second) + " A.M.";
 		}
 	} else {
 		time.innerHTML = hour + ":" + checkZero(minute) + ":" + checkZero(second);
