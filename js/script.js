@@ -66,7 +66,7 @@ function setTime(timePref) {
 		time.innerHTML = hour + ":" + checkZero(minute) + ":" + checkZero(second);
 	}
 
-	date.innerHTML = monthNames[month] + " " + day + "," + year;
+	date.innerHTML = monthNames[month] + " " + day + ", " + year;
 
 	setTimeout(function() {
 		setTime(timePref);

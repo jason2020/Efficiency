@@ -8,8 +8,7 @@ h2 {
   margin: 0;
   padding: 0; }
 
-/* 12 cols */
-/* https://coolors.co/08415c-cc2936-ebbab9-388697-dbf9b8 */
+/*https://coolors.co/08415c-eff1f3-dbd3d8-388697-dbf9b8*/
 body {
   overflow: hidden;
   font-size: 62.5%; }
@@ -17,29 +16,54 @@ body {
 #container {
   width: 100vw;
   height: 100vh;
-  background-color: #DBF9B8; }
+  background-color: #DBF9B8;
+  overflow: hidden; }
 
 #header {
-  width: 100%;
-  height: 15%;
+  width: 100vw;
+  height: 15vh;
+  max-height: 7vmax;
   background-color: #08415C; }
 
 #clock {
-  width: 33.33333%;
-  height: 16.66667%;
+  width: 38vw;
+  height: 12vh;
+  max-height: 5vmax;
   background-color: #388697;
   margin: 10% auto;
   color: #08415C;
   text-align: center; }
 
-#time, #date {
-  font-size: 300%;
+#time, #date, #nHeader, #nContent {
+  font-size: 2.5vw;
   font-family: 'Lato', sans-serif;
-  font-weight: bold; }
+  font-weight: bold;
+  color: #EFF1F3; }
+
+#date {
+  text-align: center;
+  font-size: 4vw;
+  color: #DBF9B8;
+  text-shadow: 0.05em 0.05em 0.05em #388697; }
+
+#nHeader {
+  font-size: 1.5vw;
+  border-bottom: 1px solid black;
+  color: #DBF9B8; }
+
+#nHead {
+  background-color: #08415C;
+  width: 100%;
+  height: 4vh;
+  max-height: 1.75vmax; }
+
+#nContent {
+  color: #3D5A80; }
 
 #checkbox {
-  background-color: #CC2936;
-  width: 20vw;
+  background-color: #EFF1F3;
+  width: 25vw;
   height: 40vh;
-  margin-left: 79.8%;
+  max-height: 20vmax;
+  margin-left: 72%;
   margin-top: -7.8%; }
