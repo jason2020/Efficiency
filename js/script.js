@@ -1,3 +1,6 @@
+document.getElementById("noteAdd").addEventListener("click", addNote);
+$("#nContent").sortable({forcePlaceholderSize: true});
+
 function checkSupport() {
 	if (typeof(Storage) !== "undefined") {
 		var data = getData();
@@ -89,8 +92,63 @@ function setItems (obj) {
 function getItems (obj) {
 	var tObj = {};
 	for (var prop in obj) {
-		var objProperty = sessionStorage.getItem(prop);
-		tObj[prop] = objProperty;
+		if (prop == "list") {
+			var objProperty = sessionStorage.getItem(prop).split(",");
+			tObj["list"] = [objProperty];
+		} else {
+			var objProperty = sessionStorage.getItem(prop);
+			tObj[prop] = objProperty;
+		}
 	}
 	return tObj;
+}
+
+function addNote() {
+	var note = document.createElement("div");
+	note.className = "note";
+	var text = document.createElement("p"); 
+	text.className = "noteText";
+	text.innerHTML = " ";
+	text.setAttribute("contentEditable", true);
+	text.setAttribute("spellcheck", false);
+	var remove = document.createElement("div");
+	remove.className = "remove";
+	remove.innerHTML = "x";
+	note.appendChild(remove);
+	note.appendChild(text);
+	document.getElementById("nContent").appendChild(note);
+	$(".note").resizable();
+	addEvents();
+}
+
+function deleteNote() {
+	console.log(this);
+	this.parentNode.parentNode.removeChild(this.parentNode);
+}
+
+function addEvents() {
+	var removeButtons = document.querySelectorAll(".remove");
+	var length = removeButtons.length;
+	var notes = document.querySelectorAll(".note");
+	var noteLength = notes.length;
+	for (var i = 0; i < length; i++) {
+		removeButtons[i].addEventListener("click", deleteNote);
+	}
+	for (var i = 0; i < noteLength; i++) {
+		notes[i].addEventListener("dblclick", edit);
+	}
+}
+
+function edit() {
+	var text = this.getElementsByClassName("noteText")[0];
+	selectElementContents(text);
+}
+
+
+function selectElementContents(el) {
+    var range = document.createRange();
+    range.selectNodeContents(el);
+    var sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
 }
